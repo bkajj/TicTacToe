@@ -51,3 +51,4 @@
 
 #define MAIN_MENU_HIT_SOUND_FILEPATH "res/snd/Start Game.wav"
 #define GRID_CLICK_SOUND_FILEPATH "res/snd/Grid Click Sound.wav"
+#define CLICK_SOUND_FILEPATH "res/snd/Click1.wav"

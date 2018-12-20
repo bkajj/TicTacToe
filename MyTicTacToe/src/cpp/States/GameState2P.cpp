@@ -20,6 +20,7 @@ namespace hgw
 		turn = PLAYER_PIECE;
 
 		this->_data->sounds.LoadSound("Grid Click Sound", GRID_CLICK_SOUND_FILEPATH);
+		
 
 		
 		this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
