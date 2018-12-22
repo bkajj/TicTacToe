@@ -9,14 +9,21 @@ namespace hgw
 	{
 	public:
 
-		SoundManager() {};
+		SoundManager();
 		~SoundManager() {};
 
-		void LoadSound(std::string name, std::string filename);
-		sf::SoundBuffer &GetSound(std::string name);
-		sf::Sound sound;
+		sf::Sound StartGameSound;
+		sf::Sound GridClickSound;
+		sf::Sound ClickSound1;
+		sf::Sound ClickSound2;
 
 	private:
-		std::map<std::string, sf::SoundBuffer> _sounds;
+		sf::SoundBuffer StartGameBuffer;
+		sf::SoundBuffer GridClickBuffer;
+		sf::SoundBuffer ClickBuffer1;
+		sf::SoundBuffer ClickBuffer2;
+
+		void LoadFromFile();
+		void SetBuffers();
 	};
 }

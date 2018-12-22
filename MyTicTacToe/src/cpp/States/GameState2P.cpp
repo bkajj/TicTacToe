@@ -19,10 +19,6 @@ namespace hgw
 		gameState = STATE_PLAYING;
 		turn = PLAYER_PIECE;
 
-		this->_data->sounds.LoadSound("Grid Click Sound", GRID_CLICK_SOUND_FILEPATH);
-		
-
-		
 		this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 		this->_data->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
 		this->_data->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
@@ -64,6 +60,7 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_pauseButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
+				this->_data->sounds.ClickSound1.play();
 				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
 			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, sf::Mouse::Left, event.type,
@@ -168,30 +165,19 @@ namespace hgw
 
 			if (PLAYER_PIECE == turn)
 			{
+				this->_data->sounds.GridClickSound.play();
 				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("X Piece"));
-
-				if (this->_data->sounds.sound.getBuffer() != &(this->_data->sounds.GetSound("Grid Click Sound")))
-				{
-					this->_data->sounds.sound.setBuffer(this->_data->sounds.GetSound("Grid Click Sound"));
-				}
 				
-				this->_data->sounds.sound.play();
-
 				this->CheckPlayerHasWon(turn);
 
 				turn = AI_PIECE;
 			}
 			else if (AI_PIECE == turn)
 			{
+				this->_data->sounds.GridClickSound.play();
+
 				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("O Piece"));
 
-				if (this->_data->sounds.sound.getBuffer() != &(this->_data->sounds.GetSound("Grid Click Sound")))
-				{
-					this->_data->sounds.sound.setBuffer(this->_data->sounds.GetSound("Grid Click Sound"));
-				}
-
-				this->_data->sounds.sound.play();
-				
 				this->CheckPlayerHasWon(turn);
 
 				turn = PLAYER_PIECE;

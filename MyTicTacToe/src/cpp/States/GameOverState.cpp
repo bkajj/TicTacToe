@@ -18,6 +18,7 @@ namespace hgw
 
 	void GameOverState::Init()
 	{
+
 		this->_data->assets.LoadTexture("Retry Button", RETRY_BUTTON);
 		this->_data->assets.LoadTexture("Home Button", HOME_BUTTON);
 
@@ -66,12 +67,14 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_retryButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
+				this->_data->sounds.ClickSound1.play();
+				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);/////////////////tu jest problem tak jakby niszczy state albo co
 			}
 
 			if (this->_data->input.IsSpriteClicked(this->_homeButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
+				this->_data->sounds.ClickSound1.play();
 				this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
 			}
 		}

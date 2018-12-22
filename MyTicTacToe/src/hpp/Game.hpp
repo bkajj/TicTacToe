@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include "StateMachine.hpp"
 #include "AssetManager.hpp"
@@ -25,7 +26,6 @@ namespace hgw
 	{
 	public:
 		Game(int width, int height, std::string title);
-
 	private:
 		const float dt = 1.0f / 60.0f;
 		sf::Clock _clock;

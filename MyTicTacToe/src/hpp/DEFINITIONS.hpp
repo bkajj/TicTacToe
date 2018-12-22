@@ -49,6 +49,7 @@
 #define GAME_OVER_O_WON_FILEPATH "res/edit/Game Over O Won.png"
 #define GAME_OVER_DRAW_FILEPATH "res/edit/Game Over Draw.png"
 
-#define MAIN_MENU_HIT_SOUND_FILEPATH "res/snd/Start Game.wav"
+#define START_GAME_CLICK_SOUND_FILEPATH "res/snd/Start Game.wav"
 #define GRID_CLICK_SOUND_FILEPATH "res/snd/Grid Click Sound.wav"
-#define CLICK_SOUND_FILEPATH "res/snd/Click1.wav"
+#define CLICK_SOUND_1_FILEPATH "res/snd/Click1.wav"
+#define CLICK_SOUND_2_FILEPATH "res/snd/Click2.wav"

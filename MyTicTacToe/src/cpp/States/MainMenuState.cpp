@@ -8,6 +8,7 @@
 
 namespace hgw
 {
+	// add setsmoth() to textres
 	MainMenuState::MainMenuState(GameDataRef data) : _data(data)
 	{
 
@@ -15,9 +16,6 @@ namespace hgw
 
 	void MainMenuState::Init()
 	{
-		this->_data->sounds.LoadSound("Menu Hit Sound", MAIN_MENU_HIT_SOUND_FILEPATH);
-		this->_data->sounds.sound.setBuffer(this->_data->sounds.GetSound("Menu Hit Sound"));
-
 		this->_data->assets.LoadTexture("Background", MAIN_MENU_BACKGROUND_FILEPATH);
 		this->_data->assets.LoadTexture("1P Play Button", MAIN_MENU_1P_PLAY_BUTTON);
 		this->_data->assets.LoadTexture("2P Play Button", MAIN_MENU_2P_PLAY_BUTTON);
@@ -52,7 +50,7 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_2pPlayButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->sounds.sound.play();
+				this->_data->sounds.StartGameSound.play();
 				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
 			}
 		}
@@ -62,7 +60,6 @@ namespace hgw
 	{
 
 	}
-
 	void MainMenuState::Draw(float dt)
 	{
 		this->_data->window.clear();

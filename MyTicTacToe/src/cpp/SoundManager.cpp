@@ -1,19 +1,27 @@
 #include "src/hpp/SoundManager.hpp"
+#include "src/hpp/DEFINITIONS.hpp"
 
 namespace hgw
 {
-	void SoundManager::LoadSound(std::string name, std::string filename)
+	SoundManager::SoundManager()
 	{
-		sf::SoundBuffer buffer;
-
-		if (buffer.loadFromFile(filename))
-		{
-			this->_sounds[name] = buffer;
-		}
+		LoadFromFile();
+		SetBuffers();
 	}
 
-	sf::SoundBuffer &SoundManager::GetSound(std::string name)
+	void SoundManager::LoadFromFile()
 	{
-		return this->_sounds.at(name);
+		StartGameBuffer.loadFromFile(START_GAME_CLICK_SOUND_FILEPATH);
+		GridClickBuffer.loadFromFile(GRID_CLICK_SOUND_FILEPATH);
+		ClickBuffer1.loadFromFile(CLICK_SOUND_1_FILEPATH);
+		ClickBuffer2.loadFromFile(CLICK_SOUND_2_FILEPATH);
+	}
+
+	void SoundManager::SetBuffers()
+	{
+		StartGameSound.setBuffer(StartGameBuffer);
+		GridClickSound.setBuffer(GridClickBuffer);
+		ClickSound1.setBuffer(ClickBuffer1);
+		ClickSound2.setBuffer(ClickBuffer2); 
 	}
 }

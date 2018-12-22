@@ -1,2 +1,83 @@
-﻿  GameState2P.cpp
-  MyTicTacToe.vcxproj -> P:\VisualC++\Projects\MyTicTacToe\x64\Debug\MyTicTacToe.exe
+﻿  Game.cpp
+  InputManager.cpp
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(14): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(13): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(13): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(12): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(33): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(32): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(32): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+p:\github\tictactoe\mytictactoe\src\cpp\inputmanager.cpp(31): warning C4244: 'argument': conversion from 'const T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Main.cpp
+  SoundManager.cpp
+  GameOverState.cpp
+  GameState2P.cpp
+  MainMenuState.cpp
+  PauseState.cpp
+  SplashState.cpp
+  Generating Code...
+  MyTicTacToe.vcxproj -> P:\GitHub\TicTacToe\x64\Debug\MyTicTacToe.exe
