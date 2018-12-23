@@ -50,7 +50,7 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_2pPlayButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->sounds.StartGameSound.play();
+				this->_data->sounds.Play(this->_data->sounds.StartGameSound);
 				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
 			}
 		}

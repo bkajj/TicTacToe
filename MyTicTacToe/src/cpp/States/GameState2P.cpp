@@ -60,7 +60,7 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_pauseButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->sounds.ClickSound1.play();
+				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
 			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, sf::Mouse::Left, event.type,
@@ -165,7 +165,8 @@ namespace hgw
 
 			if (PLAYER_PIECE == turn)
 			{
-				this->_data->sounds.GridClickSound.play();
+				this->_data->sounds.Play(this->_data->sounds.GridClickSound);
+
 				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("X Piece"));
 				
 				this->CheckPlayerHasWon(turn);
@@ -174,7 +175,7 @@ namespace hgw
 			}
 			else if (AI_PIECE == turn)
 			{
-				this->_data->sounds.GridClickSound.play();
+				this->_data->sounds.Play(this->_data->sounds.GridClickSound);
 
 				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("O Piece"));
 

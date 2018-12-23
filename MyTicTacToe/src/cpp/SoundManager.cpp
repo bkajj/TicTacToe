@@ -1,12 +1,17 @@
 #include "src/hpp/SoundManager.hpp"
 #include "src/hpp/DEFINITIONS.hpp"
+#include <iostream>
 
 namespace hgw
 {
-	SoundManager::SoundManager()
+	void SoundManager::Init()
 	{
-		LoadFromFile();
-		SetBuffers();
+		if (!muted && !isLoaded)
+		{
+			LoadFromFile();
+			SetBuffers();
+			isLoaded = true;
+		}
 	}
 
 	void SoundManager::LoadFromFile()
@@ -23,5 +28,44 @@ namespace hgw
 		GridClickSound.setBuffer(GridClickBuffer);
 		ClickSound1.setBuffer(ClickBuffer1);
 		ClickSound2.setBuffer(ClickBuffer2); 
+	}
+
+	void SoundManager::Play(sf::Sound &sound)
+	{
+		if (muted)
+		{
+			std::cout << "Song Muted" << std::endl;
+		}
+		else 
+		{ 
+			sound.play();
+		}
+	}
+
+	void SoundManager::Mute() 
+	{
+		if (muted)
+		{
+			std::cout << "Alredy muted" << std::endl;
+		}
+		else
+		{
+			muted = true;
+		}
+	}
+	void SoundManager::unMute()
+	{
+		if (!muted)
+		{
+			std::cout << "Alredy unmuted" << std::endl;
+		}
+		else
+		{
+			muted = false;
+			if (!isLoaded)
+			{
+				Init();
+			}
+		}
 	}
 }

@@ -67,14 +67,14 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_retryButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->sounds.ClickSound1.play();
-				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);/////////////////tu jest problem tak jakby niszczy state albo co
+				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
+				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
 			}
 
 			if (this->_data->input.IsSpriteClicked(this->_homeButton, sf::Mouse::Left, event.type,
 				this->_data->window))
 			{
-				this->_data->sounds.ClickSound1.play();
+				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
 			}
 		}
