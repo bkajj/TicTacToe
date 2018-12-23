@@ -148,6 +148,7 @@
     <ClInclude Include="src\hpp\DEFINITIONS.hpp" />
     <ClInclude Include="src\hpp\Game.hpp" />
     <ClInclude Include="src\hpp\InputManager.hpp" />
+    <ClInclude Include="src\hpp\MusicManager.hpp" />
     <ClInclude Include="src\hpp\SoundManager.hpp" />
     <ClInclude Include="src\hpp\State.hpp" />
     <ClInclude Include="src\hpp\StateMachine.hpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\cpp\Game.cpp" />
     <ClCompile Include="src\cpp\InputManager.cpp" />
     <ClCompile Include="src\cpp\Main.cpp" />
+    <ClCompile Include="src\cpp\MusicManager.cpp" />
     <ClCompile Include="src\cpp\SoundManager.cpp" />
     <ClCompile Include="src\cpp\StateMachine.cpp" />
     <ClCompile Include="src\cpp\States\GameOverState.cpp" />

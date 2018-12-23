@@ -8,6 +8,7 @@
 #include "AssetManager.hpp"
 #include "InputManager.hpp"
 #include "SoundManager.hpp"
+#include "MusicManager.hpp"
 
 namespace hgw
 {
@@ -18,6 +19,7 @@ namespace hgw
 		AssetManager assets;
 		InputManager input;
 		SoundManager sounds;
+		MusicManager music;
 	};
 
 	typedef std::shared_ptr<GameData> GameDataRef;

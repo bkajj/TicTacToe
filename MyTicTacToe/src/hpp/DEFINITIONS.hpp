@@ -53,3 +53,5 @@
 #define GRID_CLICK_SOUND_FILEPATH "res/snd/Grid Click Sound.wav"
 #define CLICK_SOUND_1_FILEPATH "res/snd/Click1.wav"
 #define CLICK_SOUND_2_FILEPATH "res/snd/Click2.wav"
+
+#define GAME_MUSIC_FILEPATH "res/msc/Game Music.wav"

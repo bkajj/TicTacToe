@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "src/hpp/DEFINITIONS.hpp"
-
 #include "src/hpp/States/PauseState.hpp"
 #include "src/hpp/States/GameState2P.hpp"
 #include "src/hpp/States/MainMenuState.hpp"

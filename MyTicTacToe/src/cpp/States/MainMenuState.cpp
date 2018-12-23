@@ -11,7 +11,7 @@ namespace hgw
 	// add setsmoth() to textres
 	MainMenuState::MainMenuState(GameDataRef data) : _data(data)
 	{
-
+		this->_data->music.LoopPlay(this->_data->music.gameMusic, 10.0f);
 	}
 
 	void MainMenuState::Init()
