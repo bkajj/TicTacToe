@@ -21,7 +21,9 @@ namespace hgw
 		void Play(sf::Sound &sound);
 
 		void Mute();
-		void unMute();
+		void UnMute();
+
+		bool IsMuted();
 
 	private:
 		sf::SoundBuffer StartGameBuffer;
@@ -35,4 +37,5 @@ namespace hgw
 		void LoadFromFile();
 		void SetBuffers();
 	};
+
 }

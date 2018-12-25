@@ -18,7 +18,11 @@ namespace hgw
 		void Mute();
 		void UnMute();
 
+		bool IsMuted();
+		bool IsLoaded();
+
 	private:
-		bool muted = false;
+		bool muted = true;
+		bool loaded = false;
 	};
 }

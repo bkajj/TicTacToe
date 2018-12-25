@@ -12,6 +12,14 @@
 #define MAIN_MENU_1P_PLAY_BUTTON "res/edit/1P Play Button.png"
 #define MAIN_MENU_2P_PLAY_BUTTON "res/edit/2P Play Button.png"
 #define MAIN_MENU_PLAY_BUTTON_OUTER "res/res/Play Button Outer.png"
+#define MAIN_MENU_SETTINGS_ICON_FILEPATH "res/edit/Settings.png"
+#define MAIN_MENU_MUSIC_ON_ICON_FILEPATH "res/edit/Music On.png"
+#define MAIN_MENU_MUSIC_OFF_ICON_FILEPATH "res/edit/Music Off.png"
+#define MAIN_MENU_SOUND_ON_ICON_FILEPATH "res/edit/Sound On.png"
+#define MAIN_MENU_SOUND_OFF_ICON_FILEPATH "res/edit/Sound Off.png"
+
+#define VOLUME_BAR_FILEPATH "res/edit/Volume Bar.png"
+#define VOLUME_POINT_FILEPATH "res/edit/Volume Point.png"
 
 #define GAME_BACKGROUND_FILEPATH "res/res/Main Menu Background.png"
 #define PAUSE_BUTTON "res/res/Pause Button.png"

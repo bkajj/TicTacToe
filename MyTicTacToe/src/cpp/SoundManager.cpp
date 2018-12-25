@@ -53,7 +53,7 @@ namespace hgw
 			muted = true;
 		}
 	}
-	void SoundManager::unMute()
+	void SoundManager::UnMute()
 	{
 		if (!muted)
 		{
@@ -67,5 +67,10 @@ namespace hgw
 				Init();
 			}
 		}
+	}
+
+	bool SoundManager::IsMuted()
+	{
+		return muted;
 	}
 }

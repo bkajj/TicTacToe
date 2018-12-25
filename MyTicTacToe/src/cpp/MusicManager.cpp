@@ -23,6 +23,7 @@ namespace hgw
 					music.setLoop(true);
 					music.play();
 					music.setVolume(soundVolume);
+					loaded = true;
 				}
 			}
 		}
@@ -50,6 +51,7 @@ namespace hgw
 				{
 					music.play();
 					music.setVolume(soundVolume);
+					loaded = true;
 				}
 			}
 		}
@@ -81,5 +83,15 @@ namespace hgw
 		{
 			muted = false;
 		}
+	}
+
+	bool MusicManager::IsMuted()
+	{
+		return muted;
+	}
+
+	bool MusicManager::IsLoaded()
+	{
+		return loaded;
 	}
 }

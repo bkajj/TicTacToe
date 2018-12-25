@@ -23,5 +23,9 @@ namespace hgw
 		sf::Sprite _1pPlayButton;
 		sf::Sprite _2pPlayButton;
 		sf::Sprite _title;
+		sf::Sprite _settings;
+
+		sf::Sprite _sound;
+		sf::Sprite _music;
 	};
 }

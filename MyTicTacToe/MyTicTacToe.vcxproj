@@ -156,6 +156,7 @@
     <ClInclude Include="src\hpp\States\GameState2P.hpp" />
     <ClInclude Include="src\hpp\States\MainMenuState.hpp" />
     <ClInclude Include="src\hpp\States\PauseState.hpp" />
+    <ClInclude Include="src\hpp\States\SettingsState.hpp" />
     <ClInclude Include="src\hpp\States\SplashState.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClCompile Include="src\cpp\States\GameState2P.cpp" />
     <ClCompile Include="src\cpp\States\MainMenuState.cpp" />
     <ClCompile Include="src\cpp\States\PauseState.cpp" />
+    <ClCompile Include="src\cpp\States\SettingsState.cpp" />
     <ClCompile Include="src\cpp\States\SplashState.cpp" />
   </ItemGroup>
   <ItemGroup>
