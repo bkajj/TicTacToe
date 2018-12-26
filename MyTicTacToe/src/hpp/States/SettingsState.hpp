@@ -26,7 +26,12 @@ namespace hgw
 		sf::Sprite _music;
 		sf::Sprite _settings;
 
+		sf::Sprite _difficultyText;
+		sf::Sprite _easyDiff, _mediumDiff, _impossibleDiff;
+
 		cmp::VolumeBar _musicBar{ _data };
 		cmp::VolumeBar _soundBar{ _data };
+
+		static int difficulty;
 	};
 }

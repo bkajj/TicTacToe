@@ -12,11 +12,6 @@
 #define MAIN_MENU_1P_PLAY_BUTTON "res/edit/1P Play Button.png"
 #define MAIN_MENU_2P_PLAY_BUTTON "res/edit/2P Play Button.png"
 #define MAIN_MENU_PLAY_BUTTON_OUTER "res/res/Play Button Outer.png"
-#define MAIN_MENU_SETTINGS_ICON_FILEPATH "res/edit/Settings.png"
-#define MAIN_MENU_MUSIC_ON_ICON_FILEPATH "res/edit/Music On.png"
-#define MAIN_MENU_MUSIC_OFF_ICON_FILEPATH "res/edit/Music Off.png"
-#define MAIN_MENU_SOUND_ON_ICON_FILEPATH "res/edit/Sound On.png"
-#define MAIN_MENU_SOUND_OFF_ICON_FILEPATH "res/edit/Sound Off.png"
 
 #define VOLUME_BAR_FILEPATH "res/edit/Volume Bar.png"
 #define VOLUME_POINT_FILEPATH "res/edit/Volume Point.png"
@@ -43,6 +38,10 @@
 #define STATE_AI_PLAYING 93
 #define STATE_DRAW 92
 
+#define AI_DIFFICULTY_EASY 10
+#define AI_DIFFICULTY_MEDIUM 20
+#define AI_DIFFICULTY_IMPOSSIBLE 30 
+
 #define PAUSE_BACKGROUND_FILEPATH "res/res/Pause Background.png"
 #define RESUME_BUTTON "res/edit/Resume Button.png"
 #define HOME_BUTTON "res/edit/Home Button.png"
@@ -63,3 +62,24 @@
 #define CLICK_SOUND_2_FILEPATH "res/snd/Click2.wav"
 
 #define GAME_MUSIC_FILEPATH "res/msc/Game Music.wav"
+
+#define SETTINGS_ICON_FILEPATH "res/edit/Settings.png"
+#define SETTINGS_MUSIC_ON_ICON_FILEPATH "res/edit/Music On.png"
+#define SETTINGS_MUSIC_OFF_ICON_FILEPATH "res/edit/Music Off.png"
+#define SETTINGS_SOUND_ON_ICON_FILEPATH "res/edit/Sound On.png"
+#define SETTINGS_SOUND_OFF_ICON_FILEPATH "res/edit/Sound Off.png"
+
+#define SETTINGS_AI_DIFFICULTY_FILEPATH "res/edit/AI Difficulty.png"
+#define SETTINGS_DIFFICULTY_EASY_FILEPATH "res/edit/AI Easy.png"
+#define SETTINGS_DIFFICULTY_MEDIUM_FILEPATH "res/edit/AI Medium.png"
+#define SETTINGS_DIFFICULTY_IMPOSSIBLE_FILEPATH "res/edit/AI Impossible.png"
+#define SETTINGS_DIFFICULTY_EASY_SELECETED_FILEPATH "res/edit/AI Easy Selected.png"
+#define SETTINGS_DIFFICULTY_MEDIUM_SELECETED_FILEPATH "res/edit/AI Medium Selected.png"
+#define SETTINGS_DIFFICULTY_IMPOSSIBLE_SELECETED_FILEPATH "res/edit/AI Impossible Selected.png"
+
+#define EASY_WIDTH 187
+#define EASY_HEIGHT 60
+#define MEDIUM_WIDTH 285
+#define MEDIUM_HEIGHT 60
+#define IMPOSSIBLE_WIDTH 480
+#define IMPOSSIBLE_HEIGHT 60

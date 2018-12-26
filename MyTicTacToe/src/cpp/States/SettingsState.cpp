@@ -17,17 +17,29 @@ namespace hgw
 		this->_soundBar.Init();
 
 		this->_data->assets.LoadTexture("Backgound", MAIN_MENU_BACKGROUND_FILEPATH);
-		this->_data->assets.LoadTexture("Settings", MAIN_MENU_SETTINGS_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Settings", SETTINGS_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Difficulty", SETTINGS_AI_DIFFICULTY_FILEPATH);
 
-		this->_data->assets.LoadTexture("Music On", MAIN_MENU_MUSIC_ON_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Music Off", MAIN_MENU_MUSIC_OFF_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Sound On", MAIN_MENU_SOUND_ON_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Sound Off", MAIN_MENU_SOUND_OFF_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Music On", SETTINGS_MUSIC_ON_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Music Off", SETTINGS_MUSIC_OFF_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Sound On", SETTINGS_SOUND_ON_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Sound Off", SETTINGS_SOUND_OFF_ICON_FILEPATH);
+
+		this->_data->assets.LoadTexture("Easy Diff", SETTINGS_DIFFICULTY_EASY_FILEPATH);
+		this->_data->assets.LoadTexture("Medium Diff", SETTINGS_DIFFICULTY_MEDIUM_FILEPATH);
+		this->_data->assets.LoadTexture("Impossible Diff", SETTINGS_DIFFICULTY_IMPOSSIBLE_FILEPATH);
+		this->_data->assets.LoadTexture("Easy Diff Selected", SETTINGS_DIFFICULTY_EASY_SELECETED_FILEPATH);
+		this->_data->assets.LoadTexture("Medium Diff Selected", SETTINGS_DIFFICULTY_MEDIUM_SELECETED_FILEPATH);
+		this->_data->assets.LoadTexture("Impossible Diff Selected", SETTINGS_DIFFICULTY_IMPOSSIBLE_SELECETED_FILEPATH);
+
+		this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff"));
+		this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff"));
+		this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff"));
 
 		this->_settings.setTexture(this->_data->assets.GetTexture("Settings"));
 		this->_background.setTexture(this->_data->assets.GetTexture("Background"));
 
-		this->_data->assets.GetTexture("Music Off").setSmooth(true);
+		this->_difficultyText.setTexture(this->_data->assets.GetTexture("Difficulty"));
 
 		if (this->_data->sounds.IsMuted())
 		{
@@ -47,6 +59,20 @@ namespace hgw
 			this->_music.setTexture(this->_data->assets.GetTexture("Music On"));
 		}
 
+		switch (this->difficulty)
+		{
+		case AI_DIFFICULTY_EASY:
+			this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff Selected"));
+			break;
+		case AI_DIFFICULTY_MEDIUM:
+			this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff Selected"));
+			break;
+		case AI_DIFFICULTY_IMPOSSIBLE:
+			this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff Selected"));
+			this->_impossibleDiff.setColor(sf::Color::Red);
+			break;
+		}
+
 		this->_sound.setPosition((SCREEN_WIDTH / 2) + (this->_sound.getGlobalBounds().width / 1.5f),
 			(SCREEN_HEIGHT / 8) - (this->_sound.getGlobalBounds().height / 2));
 
@@ -59,8 +85,16 @@ namespace hgw
 		this->_soundBar.Attach(this->_sound, sf::Vector2f(0, 60), this->_data->sounds.GetVolume());
 		this->_musicBar.Attach(this->_music, sf::Vector2f(0, 60), this->_data->music.GetVolume());
 
-		std::cout << _soundBar._bar.getPosition().y << " = snd bar y pos" << std::endl;
-		std::cout << _musicBar._bar.getPosition().y << " = msc bar y pos" << std::endl;
+		this->_difficultyText.setPosition((SCREEN_WIDTH / 2) - (this->_difficultyText.getLocalBounds().width / 2),
+			(SCREEN_HEIGHT / 4) - (this->_difficultyText.getLocalBounds().height / 2));
+
+		this->_easyDiff.setOrigin(this->_easyDiff.getGlobalBounds().width / 2, this->_easyDiff.getGlobalBounds().height / 2);
+		this->_mediumDiff.setOrigin(this->_easyDiff.getGlobalBounds().width / 2, this->_easyDiff.getGlobalBounds().height / 2);
+		this->_impossibleDiff.setOrigin(this->_easyDiff.getGlobalBounds().width / 2, this->_easyDiff.getGlobalBounds().height / 2);
+
+		this->_easyDiff.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2.7);
+		this->_mediumDiff.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2.3);
+		this->_impossibleDiff.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	}
 
 	void SettingsState::HandleInput()
@@ -74,7 +108,7 @@ namespace hgw
 				this->_data->window.close();
 			}
 
-			if (this->_data->input.IsSpriteClicked(this->_sound, sf::Mouse::Left, event.type, this->_data->window))
+			if (this->_data->input.IsSpriteClicked(this->_sound, event.type, this->_data->window))
 			{
 				if (this->_data->sounds.IsMuted())
 				{
@@ -91,7 +125,7 @@ namespace hgw
 					this->_sound.setTexture(this->_data->assets.GetTexture("Sound Off"));
 				}
 			}
-			else if (this->_data->input.IsSpriteClicked(this->_music, sf::Mouse::Left, event.type, this->_data->window))
+			else if (this->_data->input.IsSpriteClicked(this->_music, event.type, this->_data->window))
 			{
 				if (this->_data->music.IsMuted())
 				{
@@ -121,7 +155,7 @@ namespace hgw
 					this->_music.setTexture(this->_data->assets.GetTexture("Music Off"));
 				}
 			}
-			else if (this->_data->input.IsSpriteClicked(this->_settings, sf::Mouse::Left, event.type, this->_data->window))
+			else if (this->_data->input.IsSpriteClicked(this->_settings, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.RemoveState();
@@ -138,6 +172,47 @@ namespace hgw
 				this->_musicBar.MovePoint();
 				this->_data->music.SetVolume(this->_musicBar.GetVolume());
 				std::cout << this->_data->music.GetVolume() << " <- music volume" << std::endl;
+			}
+
+			if(this->_data->input.IsSpriteClicked(sf::IntRect(this->_easyDiff.getPosition().x - EASY_WIDTH / 2,
+				this->_easyDiff.getPosition().y - EASY_HEIGHT / 2, EASY_WIDTH, EASY_HEIGHT), event.type, this->_data->window))
+			{
+				if (difficulty != AI_DIFFICULTY_EASY)
+				{
+					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
+
+					this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff Selected"));
+					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff"));
+					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff"));
+					difficulty = AI_DIFFICULTY_EASY;
+				}
+			}
+			if(this->_data->input.IsSpriteClicked(sf::IntRect(this->_mediumDiff.getPosition().x - MEDIUM_WIDTH / 2,
+				this->_mediumDiff.getPosition().y - MEDIUM_HEIGHT / 2, MEDIUM_WIDTH, MEDIUM_HEIGHT), event.type, this->_data->window))
+			{
+				if (difficulty != AI_DIFFICULTY_MEDIUM)
+				{
+					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
+
+					this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff"));
+					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff Selected"));
+					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff"));
+					difficulty = AI_DIFFICULTY_MEDIUM;
+				}
+			}
+			if (this->_data->input.IsSpriteClicked(sf::IntRect(this->_impossibleDiff.getPosition().x - IMPOSSIBLE_WIDTH / 2,
+				this->_impossibleDiff.getPosition().y - IMPOSSIBLE_HEIGHT / 2, IMPOSSIBLE_WIDTH, IMPOSSIBLE_HEIGHT), event.type, this->_data->window))
+			{
+				if (difficulty != AI_DIFFICULTY_IMPOSSIBLE)
+				{
+					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
+
+					this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff"));
+					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff"));
+					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff Selected"));
+					this->_impossibleDiff.setColor(sf::Color::Red);
+					difficulty = AI_DIFFICULTY_IMPOSSIBLE;
+				}
 			}
 		}
 	}
@@ -161,6 +236,14 @@ namespace hgw
 		this->_data->window.draw(this->_soundBar._bar);
 		this->_data->window.draw(this->_soundBar._point);
 
+		this->_data->window.draw(this->_difficultyText);
+		this->_data->window.draw(this->_easyDiff);
+		this->_data->window.draw(this->_mediumDiff);
+		this->_data->window.draw(this->_impossibleDiff);
+
 		this->_data->window.display();
 	}
+
+	//static needs to be that way
+	int SettingsState::difficulty = AI_DIFFICULTY_EASY;
 }

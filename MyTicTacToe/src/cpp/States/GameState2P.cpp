@@ -57,14 +57,12 @@ namespace hgw
 				this->_data->window.close();
 			}
 
-			if (this->_data->input.IsSpriteClicked(this->_pauseButton, sf::Mouse::Left, event.type,
-				this->_data->window))
+			if (this->_data->input.IsSpriteClicked(this->_pauseButton, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
-			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, sf::Mouse::Left, event.type,
-					 this->_data->window))
+			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, event.type, this->_data->window))
 			{
 				if (STATE_PLAYING == gameState)
 				{

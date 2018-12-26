@@ -5,7 +5,7 @@
 namespace hgw
 {
 	bool InputManager::IsSpriteClicked(sf::Sprite object,
-		sf::Mouse::Button button, sf::Event::EventType eventType, sf::RenderWindow &window)
+		sf::Event::EventType eventType, sf::RenderWindow &window)
 	{
 		if (eventType == sf::Event::EventType::MouseButtonPressed)
 		{
@@ -39,6 +39,15 @@ namespace hgw
 			}
 		}
 
+		return false;
+	}
+
+	bool InputManager::IsSpriteClicked(sf::IntRect rect, sf::Event::EventType eventType, sf::RenderWindow &window)
+	{
+		if (eventType == sf::Event::EventType::MouseButtonPressed && rect.contains(sf::Mouse::getPosition(window)))
+		{
+			return true;
+		}
 		return false;
 	}
 

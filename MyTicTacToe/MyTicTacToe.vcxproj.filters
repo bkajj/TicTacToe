@@ -32,6 +32,7 @@
     <ClInclude Include="src\hpp\MusicManager.hpp" />
     <ClInclude Include="src\hpp\States\SettingsState.hpp" />
     <ClInclude Include="src\hpp\Components.hpp" />
+    <ClInclude Include="src\hpp\States\GameState1P.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cpp\StateMachine.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="src\cpp\MusicManager.cpp" />
     <ClCompile Include="src\cpp\States\SettingsState.cpp" />
     <ClCompile Include="src\cpp\Components.cpp" />
+    <ClCompile Include="src\cpp\States\GameState1P.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\edit\_pr.txt" />

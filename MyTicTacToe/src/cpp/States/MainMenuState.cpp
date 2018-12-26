@@ -21,12 +21,12 @@ namespace hgw
 		this->_data->assets.LoadTexture("1P Play Button", MAIN_MENU_1P_PLAY_BUTTON);
 		this->_data->assets.LoadTexture("2P Play Button", MAIN_MENU_2P_PLAY_BUTTON);
 		this->_data->assets.LoadTexture("Game Title", MAIN_MENU_TITLE_PATH);
-		this->_data->assets.LoadTexture("Settings", MAIN_MENU_SETTINGS_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Settings", SETTINGS_ICON_FILEPATH);
 
-		this->_data->assets.LoadTexture("Music On", MAIN_MENU_MUSIC_ON_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Music Off", MAIN_MENU_MUSIC_OFF_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Sound On", MAIN_MENU_SOUND_ON_ICON_FILEPATH);
-		this->_data->assets.LoadTexture("Sound Off", MAIN_MENU_SOUND_OFF_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Music On", SETTINGS_MUSIC_ON_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Music Off", SETTINGS_MUSIC_OFF_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Sound On", SETTINGS_SOUND_ON_ICON_FILEPATH);
+		this->_data->assets.LoadTexture("Sound Off", SETTINGS_SOUND_OFF_ICON_FILEPATH);
 
 		this->_background.setTexture(this->_data->assets.GetTexture("Background"));
 		this->_1pPlayButton.setTexture(this->_data->assets.GetTexture("1P Play Button"));
@@ -61,14 +61,12 @@ namespace hgw
 				this->_data->window.close();
 			}
 
-			if (this->_data->input.IsSpriteClicked(this->_2pPlayButton, sf::Mouse::Left, event.type,
-				this->_data->window))
+			if (this->_data->input.IsSpriteClicked(this->_2pPlayButton, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.StartGameSound);
 				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
 			}
-			else if (this->_data->input.IsSpriteClicked(this->_settings, sf::Mouse::Left, event.type,
-				this->_data->window))
+			else if (this->_data->input.IsSpriteClicked(this->_settings, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.AddState(StateRef(new SettingsState(_data)), false);

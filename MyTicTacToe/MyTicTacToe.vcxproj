@@ -154,6 +154,7 @@
     <ClInclude Include="src\hpp\State.hpp" />
     <ClInclude Include="src\hpp\StateMachine.hpp" />
     <ClInclude Include="src\hpp\States\GameOverState.hpp" />
+    <ClInclude Include="src\hpp\States\GameState1P.hpp" />
     <ClInclude Include="src\hpp\States\GameState2P.hpp" />
     <ClInclude Include="src\hpp\States\MainMenuState.hpp" />
     <ClInclude Include="src\hpp\States\PauseState.hpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="src\cpp\SoundManager.cpp" />
     <ClCompile Include="src\cpp\StateMachine.cpp" />
     <ClCompile Include="src\cpp\States\GameOverState.cpp" />
+    <ClCompile Include="src\cpp\States\GameState1P.cpp" />
     <ClCompile Include="src\cpp\States\GameState2P.cpp" />
     <ClCompile Include="src\cpp\States\MainMenuState.cpp" />
     <ClCompile Include="src\cpp\States\PauseState.cpp" />
