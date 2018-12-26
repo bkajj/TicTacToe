@@ -31,6 +31,7 @@
     <ClInclude Include="src\hpp\StateMachine.hpp" />
     <ClInclude Include="src\hpp\MusicManager.hpp" />
     <ClInclude Include="src\hpp\States\SettingsState.hpp" />
+    <ClInclude Include="src\hpp\Components.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cpp\StateMachine.cpp" />
@@ -46,6 +47,7 @@
     <ClCompile Include="src\cpp\SoundManager.cpp" />
     <ClCompile Include="src\cpp\MusicManager.cpp" />
     <ClCompile Include="src\cpp\States\SettingsState.cpp" />
+    <ClCompile Include="src\cpp\Components.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\edit\_pr.txt" />

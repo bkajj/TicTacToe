@@ -29,7 +29,7 @@ namespace hgw
 		if (sf::Mouse::isButtonPressed(button))
 		{
 			sf::IntRect tempRect(object.getPosition().x,
-				object.getPosition().y, object.getGlobalBounds().width,
+				object.getPosition().y, object.getGlobalBounds().width + 1,
 				object.getGlobalBounds().height);
 
 			if (tempRect.contains(sf::Mouse::getPosition(window)))

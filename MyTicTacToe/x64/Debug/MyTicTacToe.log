@@ -1,12 +1,2 @@
-﻿  SettingsState.cpp
-p:\github\tictactoe\mytictactoe\src\cpp\states\settingsstate.cpp(131): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-p:\github\tictactoe\mytictactoe\src\cpp\states\settingsstate.cpp(134): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
+﻿  GameState2P.cpp
   MyTicTacToe.vcxproj -> P:\GitHub\TicTacToe\x64\Debug\MyTicTacToe.exe

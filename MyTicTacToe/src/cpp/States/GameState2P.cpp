@@ -229,7 +229,8 @@ namespace hgw
 	{
 		if (pieceToCheck == gridArray[x1][y1] &&
 			pieceToCheck == gridArray[x2][y2] &&
-			pieceToCheck == gridArray[x3][y3])
+			pieceToCheck == gridArray[x3][y3] &&
+			gameState != STATE_DRAW && gameState != STATE_WON && gameState != STATE_LOSE)
 		{
 			std::string winningPieceStr;
 

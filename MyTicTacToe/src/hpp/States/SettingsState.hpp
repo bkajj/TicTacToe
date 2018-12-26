@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "src/hpp/State.hpp"
 #include "src/hpp/Game.hpp"
+#include "src/hpp/Components.hpp"
 
 namespace hgw
 {
@@ -25,6 +26,7 @@ namespace hgw
 		sf::Sprite _music;
 		sf::Sprite _settings;
 
-		sf::Sprite _bar, _point;
+		cmp::VolumeBar _musicBar{ _data };
+		cmp::VolumeBar _soundBar{ _data };
 	};
 }

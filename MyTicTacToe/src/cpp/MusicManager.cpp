@@ -20,9 +20,12 @@ namespace hgw
 				}
 				else
 				{
+					if (music.getVolume() != musicVolume)
+					{
+						music.setVolume(musicVolume);
+					}
 					music.setLoop(true);
 					music.play();
-					music.setVolume(soundVolume);
 					loaded = true;
 				}
 			}
@@ -49,8 +52,11 @@ namespace hgw
 				}
 				else
 				{
+					if (music.getVolume() != musicVolume)
+					{
+						music.setVolume(musicVolume);
+					}
 					music.play();
-					music.setVolume(soundVolume);
 					loaded = true;
 				}
 			}
@@ -93,5 +99,16 @@ namespace hgw
 	bool MusicManager::IsLoaded()
 	{
 		return loaded;
+	}
+
+	void MusicManager::SetVolume(float volume)
+	{
+		musicVolume = volume;
+		gameMusic.setVolume(volume);
+	}
+
+	float MusicManager::GetVolume()
+	{
+		return musicVolume;
 	}
 }

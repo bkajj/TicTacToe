@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\hpp\AssetManager.hpp" />
+    <ClInclude Include="src\hpp\Components.hpp" />
     <ClInclude Include="src\hpp\DEFINITIONS.hpp" />
     <ClInclude Include="src\hpp\Game.hpp" />
     <ClInclude Include="src\hpp\InputManager.hpp" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cpp\AssetManager.cpp" />
+    <ClCompile Include="src\cpp\Components.cpp" />
     <ClCompile Include="src\cpp\Game.cpp" />
     <ClCompile Include="src\cpp\InputManager.cpp" />
     <ClCompile Include="src\cpp\Main.cpp" />

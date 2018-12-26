@@ -38,6 +38,10 @@ namespace hgw
 		}
 		else 
 		{ 
+			if (sound.getVolume() != soundVolume)
+			{
+				sound.setVolume(soundVolume);
+			}
 			sound.play();
 		}
 	}
@@ -72,5 +76,15 @@ namespace hgw
 	bool SoundManager::IsMuted()
 	{
 		return muted;
+	}
+
+	void SoundManager::SetVolume(float volume)
+	{
+		soundVolume = volume;
+	}
+
+	float SoundManager::GetVolume()
+	{
+		return soundVolume;
 	}
 }
