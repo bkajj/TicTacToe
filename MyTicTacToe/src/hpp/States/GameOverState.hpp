@@ -9,7 +9,7 @@ namespace hgw
 	class GameOverState : public State
 	{
 	public:
-		GameOverState(GameDataRef data, int gameState);
+		GameOverState(GameDataRef data, int gameState, bool isPlayingVsAI, int diff);
 
 		void Init();
 
@@ -24,5 +24,7 @@ namespace hgw
 		sf::Sprite _result;
 
 		int gameState;
+		bool vsAI;
+		int difficulty;
 	};
 }

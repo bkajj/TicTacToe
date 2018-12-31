@@ -78,7 +78,7 @@ namespace hgw
 		{
 			if (this->_clock.getElapsedTime().asSeconds() > TIME_BEFORE_SHOWING_GAMEOVER)
 			{
-				this->_data->machine.AddState(StateRef(new GameOverState(_data, gameState)), true);
+				this->_data->machine.AddState(StateRef(new GameOverState(_data, gameState, false, 0)), true);
 			}
 		}
 	}

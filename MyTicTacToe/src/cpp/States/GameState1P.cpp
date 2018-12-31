@@ -82,7 +82,7 @@ namespace hgw
 		{
 			if (this->_clock.getElapsedTime().asSeconds() > TIME_BEFORE_SHOWING_GAMEOVER)
 			{
-				this->_data->machine.AddState(StateRef(new GameOverState(_data, gameState)), true);
+				this->_data->machine.AddState(StateRef(new GameOverState(_data, gameState, true, difficulty)), true);
 			}
 		}
 	}
@@ -288,9 +288,45 @@ namespace hgw
 		_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 255));
 	}
 
-	void GameState1P::MakeMove_AiMedium()
+	bool GameState1P::MakeMove_AiMedium()
 	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				if (gridArray[i][j] == EMPTY_PIECE)
+				{
+					gridArray[i][j] = PLAYER_PIECE;
 
+					if (Evaluate(gridArray) == -10)
+					{
+						gridArray[i][j] = AI_PIECE;
+						_gridPieces[i][j].setTexture(this->_data->assets.GetTexture("O Piece"));
+						_gridPieces[i][j].setColor(sf::Color(255, 255, 255, 255));
+						//to exit the function quickly
+						return 1;
+					}
+					else
+					{
+						gridArray[i][j] = EMPTY_PIECE;
+					}
+				}
+			}
+		}
+
+		int x, y;
+
+		do
+		{
+			x = Random(0, 2);
+			y = Random(0, 2);
+		} while (gridArray[x][y] != EMPTY_PIECE);
+
+		gridArray[x][y] = AI_PIECE;
+		_gridPieces[x][y].setTexture(this->_data->assets.GetTexture("O Piece"));
+		_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 255));
+
+		return 0;
 	}
 
 	void GameState1P::MakeMove_AiImpossible()

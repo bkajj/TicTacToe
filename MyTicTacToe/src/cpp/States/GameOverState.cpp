@@ -5,15 +5,16 @@
 
 #include "src/hpp/States/GameOverState.hpp"
 #include "src/hpp/States/GameState2P.hpp"
+#include "src/hpp/States/GameState1P.hpp"
 #include "src/hpp/States/MainMenuState.hpp"
 #include <SFML/Audio.hpp>
 #include "src/hpp/SoundManager.hpp"
 
 namespace hgw
 {
-	GameOverState::GameOverState(GameDataRef data, int gs) : _data(data)
+	GameOverState::GameOverState(GameDataRef data, int gs, bool isPlayingVsAI, int diff) : _data(data), gameState(gs), vsAI(isPlayingVsAI), difficulty(diff)
 	{
-		gameState = gs;
+
 	}
 
 	void GameOverState::Init()
@@ -67,7 +68,14 @@ namespace hgw
 			if (this->_data->input.IsSpriteClicked(this->_retryButton, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
-				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
+				if (vsAI)
+				{
+					this->_data->machine.AddState(StateRef(new GameState1P(_data, difficulty)), true);
+				}
+				else
+				{
+					this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
+				}
 			}
 
 			if (this->_data->input.IsSpriteClicked(this->_homeButton, event.type, this->_data->window))

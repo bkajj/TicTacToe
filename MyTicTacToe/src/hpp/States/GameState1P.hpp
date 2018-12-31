@@ -33,7 +33,7 @@ namespace hgw
 		int Random(int min, int max);
 
 		void MakeMove_AiEasy();
-		void MakeMove_AiMedium();
+		bool MakeMove_AiMedium();
 		void MakeMove_AiImpossible();
 
 		int MinMax(int grid[3][3], int depth, bool isMax);
