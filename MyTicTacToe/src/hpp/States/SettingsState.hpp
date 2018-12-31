@@ -10,7 +10,7 @@ namespace hgw
 	class SettingsState : public State
 	{
 	public:
-		SettingsState(GameDataRef data);
+		SettingsState(GameDataRef data, int *diff);
 
 		void Init();
 
@@ -32,6 +32,6 @@ namespace hgw
 		cmp::VolumeBar _musicBar{ _data };
 		cmp::VolumeBar _soundBar{ _data };
 
-		static int difficulty;
+		int *difficulty;
 	};
 }

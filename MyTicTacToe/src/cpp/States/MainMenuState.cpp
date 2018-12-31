@@ -5,6 +5,7 @@
 
 #include "src/hpp/States/MainMenuState.hpp"
 #include "src/hpp/States/GameState2P.hpp"
+#include "src/hpp/States/GameState1P.hpp"
 #include "src/hpp/States/SettingsState.hpp"
 
 namespace hgw
@@ -66,10 +67,16 @@ namespace hgw
 				this->_data->sounds.Play(this->_data->sounds.StartGameSound);
 				this->_data->machine.AddState(StateRef(new GameState2P(_data)), true);
 			}
+			else if (this->_data->input.IsSpriteClicked(this->_1pPlayButton, event.type, this->_data->window))
+			{
+				this->_data->sounds.Play(this->_data->sounds.StartGameSound);
+
+				this->_data->machine.AddState(StateRef(new GameState1P(_data, difficulty)), true);
+			}
 			else if (this->_data->input.IsSpriteClicked(this->_settings, event.type, this->_data->window))
 			{
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
-				this->_data->machine.AddState(StateRef(new SettingsState(_data)), false);
+				this->_data->machine.AddState(StateRef(new SettingsState(_data, &difficulty)), false);
 			}
 		}
 	}
@@ -78,6 +85,7 @@ namespace hgw
 	{
 
 	}
+
 	void MainMenuState::Draw(float dt)
 	{
 		this->_data->window.clear();
@@ -90,4 +98,6 @@ namespace hgw
 
 		this->_data->window.display();
 	}
+
+	int MainMenuState::difficulty = AI_DIFFICULTY_EASY;
 }

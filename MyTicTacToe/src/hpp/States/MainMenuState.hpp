@@ -27,5 +27,7 @@ namespace hgw
 
 		sf::Sprite _sound;
 		sf::Sprite _music;
+
+		static int difficulty;
 	};
 }

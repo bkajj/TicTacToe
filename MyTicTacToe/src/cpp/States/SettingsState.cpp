@@ -6,7 +6,7 @@
 
 namespace hgw
 {
-	SettingsState::SettingsState(GameDataRef data) : _data(data)
+	SettingsState::SettingsState(GameDataRef data, int *diff) : _data(data), difficulty(diff)
 	{
 		
 	}
@@ -59,18 +59,19 @@ namespace hgw
 			this->_music.setTexture(this->_data->assets.GetTexture("Music On"));
 		}
 
-		switch (this->difficulty)
+
+		if (*difficulty == AI_DIFFICULTY_EASY)
 		{
-		case AI_DIFFICULTY_EASY:
 			this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff Selected"));
-			break;
-		case AI_DIFFICULTY_MEDIUM:
+		}
+		else if (*difficulty == AI_DIFFICULTY_MEDIUM)
+		{
 			this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff Selected"));
-			break;
-		case AI_DIFFICULTY_IMPOSSIBLE:
+		}
+		else if (*difficulty == AI_DIFFICULTY_IMPOSSIBLE)
+		{
 			this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff Selected"));
 			this->_impossibleDiff.setColor(sf::Color::Red);
-			break;
 		}
 
 		this->_sound.setPosition((SCREEN_WIDTH / 2) + (this->_sound.getGlobalBounds().width / 1.5f),
@@ -177,33 +178,33 @@ namespace hgw
 			if(this->_data->input.IsSpriteClicked(sf::IntRect(this->_easyDiff.getPosition().x - EASY_WIDTH / 2,
 				this->_easyDiff.getPosition().y - EASY_HEIGHT / 2, EASY_WIDTH, EASY_HEIGHT), event.type, this->_data->window))
 			{
-				if (difficulty != AI_DIFFICULTY_EASY)
+				if (*difficulty != AI_DIFFICULTY_EASY)
 				{
 					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 
 					this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff Selected"));
 					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff"));
 					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff"));
-					difficulty = AI_DIFFICULTY_EASY;
+					*difficulty = AI_DIFFICULTY_EASY;
 				}
 			}
 			if(this->_data->input.IsSpriteClicked(sf::IntRect(this->_mediumDiff.getPosition().x - MEDIUM_WIDTH / 2,
 				this->_mediumDiff.getPosition().y - MEDIUM_HEIGHT / 2, MEDIUM_WIDTH, MEDIUM_HEIGHT), event.type, this->_data->window))
 			{
-				if (difficulty != AI_DIFFICULTY_MEDIUM)
+				if (*difficulty != AI_DIFFICULTY_MEDIUM)
 				{
 					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 
 					this->_easyDiff.setTexture(this->_data->assets.GetTexture("Easy Diff"));
 					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff Selected"));
 					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff"));
-					difficulty = AI_DIFFICULTY_MEDIUM;
+					*difficulty = AI_DIFFICULTY_MEDIUM;
 				}
 			}
 			if (this->_data->input.IsSpriteClicked(sf::IntRect(this->_impossibleDiff.getPosition().x - IMPOSSIBLE_WIDTH / 2,
 				this->_impossibleDiff.getPosition().y - IMPOSSIBLE_HEIGHT / 2, IMPOSSIBLE_WIDTH, IMPOSSIBLE_HEIGHT), event.type, this->_data->window))
 			{
-				if (difficulty != AI_DIFFICULTY_IMPOSSIBLE)
+				if (*difficulty != AI_DIFFICULTY_IMPOSSIBLE)
 				{
 					this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 
@@ -211,7 +212,7 @@ namespace hgw
 					this->_mediumDiff.setTexture(this->_data->assets.GetTexture("Medium Diff"));
 					this->_impossibleDiff.setTexture(this->_data->assets.GetTexture("Impossible Diff Selected"));
 					this->_impossibleDiff.setColor(sf::Color::Red);
-					difficulty = AI_DIFFICULTY_IMPOSSIBLE;
+					*difficulty = AI_DIFFICULTY_IMPOSSIBLE;
 				}
 			}
 		}
@@ -243,7 +244,4 @@ namespace hgw
 
 		this->_data->window.display();
 	}
-
-	//static needs to be that way
-	int SettingsState::difficulty = AI_DIFFICULTY_EASY;
 }
