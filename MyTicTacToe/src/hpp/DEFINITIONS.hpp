@@ -4,6 +4,7 @@
 #define SCREEN_HEIGHT 1136
 
 #define SPLASH_STATE_SHOW_TIME 3
+#define AI_FAKE_TIME 0.5
 #define SPLASH_SCENE_BACKGROUND_FILEPATH "res/res/Splash Background.png"
 
 #define MAIN_MENU_BACKGROUND_FILEPATH "res/res/Main Menu Background.png"

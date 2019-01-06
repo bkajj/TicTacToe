@@ -51,8 +51,10 @@ namespace hgw
 			{
 				return std::round(pointPos) / barSize * 100;
 			}
-			else return 0;
-			//(sf::Mouse::getPosition(this->_data->window).x - this->_bar.getPosition().x) / this->_bar.getGlobalBounds().width * 100
+			else
+			{
+				return 0;
+			}
 		}
 
 	}

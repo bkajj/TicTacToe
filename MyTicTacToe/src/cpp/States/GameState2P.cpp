@@ -62,7 +62,7 @@ namespace hgw
 				this->_data->sounds.Play(this->_data->sounds.ClickSound1);
 				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
-			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, event.type, this->_data->window))
+			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, event.type, this->_data->window) && !isWaitingForFade)
 			{
 				if (STATE_PLAYING == gameState)
 				{
@@ -74,6 +74,9 @@ namespace hgw
 
 	void GameState2P::Update(float dt)
 	{
+		FadeGame();
+		FadeWin();
+
 		if (gameState == STATE_WON || gameState == STATE_LOSE || gameState == STATE_DRAW)
 		{
 			if (this->_clock.getElapsedTime().asSeconds() > TIME_BEFORE_SHOWING_GAMEOVER)
@@ -97,6 +100,7 @@ namespace hgw
 			{
 				this->_data->window.draw(this->_gridPieces[x][y]);
 			}
+			this->_data->window.draw(this->_winningPieces[x]);
 		}
 
 		this->_data->window.display();
@@ -169,7 +173,7 @@ namespace hgw
 				
 				this->CheckPlayerHasWon(turn);
 
-				turn = AI_PIECE;
+				this->isFading[column - 1][row - 1] = true;
 			}
 			else if (AI_PIECE == turn)
 			{
@@ -179,10 +183,10 @@ namespace hgw
 
 				this->CheckPlayerHasWon(turn);
 
-				turn = PLAYER_PIECE;
+				this->isFading[column - 1][row - 1] = true;
 			}
+			isWaitingForFade = true;
 
-			_gridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
 		}
 	}
 
@@ -241,9 +245,12 @@ namespace hgw
 				winningPieceStr = "X Winning Piece";
 			}
 
-			_gridPieces[x1][y1].setTexture(this->_data->assets.GetTexture(winningPieceStr));
-			_gridPieces[x2][y2].setTexture(this->_data->assets.GetTexture(winningPieceStr));
-			_gridPieces[x3][y3].setTexture(this->_data->assets.GetTexture(winningPieceStr));
+			this->playerWinningPieces[0][0] = x1;
+			this->playerWinningPieces[0][1] = y1;
+			this->playerWinningPieces[1][0] = x2;
+			this->playerWinningPieces[1][1] = y2;
+			this->playerWinningPieces[2][0] = x3;
+			this->playerWinningPieces[2][1] = y3;
 
 			if (pieceToCheck == PLAYER_PIECE)
 			{
@@ -252,6 +259,70 @@ namespace hgw
 			else
 			{
 				gameState = STATE_LOSE;
+			}
+
+			this->isWinFading = true;
+		}
+	}
+
+	void GameState2P::FadeGame()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				if (this->isFading[i][j])
+				{
+					_gridPieces[i][j].setColor(sf::Color(255, 255, 255, oppacity[i][j] += 6));
+					if (static_cast<int>(_gridPieces[i][j].getColor().a) >= 249)
+					{
+						_gridPieces[i][j].setColor(sf::Color(255, 255, 255, 255));
+						this->isFading[i][j] = false;
+
+						if (turn == AI_PIECE)
+						{
+							turn = PLAYER_PIECE;
+						}
+						else
+						{
+							turn = AI_PIECE;
+						}
+
+						isWaitingForFade = false;
+					}
+				}
+			}
+		}
+	}
+
+	void GameState2P::FadeWin()
+	{
+		if (isWinFading)
+		{
+			winOppacity += 6;
+			for (int i = 0; i < 3; i++)
+			{
+				this->playerWinningPieces[i];
+				_winningPieces[i].setPosition(_gridPieces[playerWinningPieces[i][0]][playerWinningPieces[i][1]].getPosition());
+				if (gameState == STATE_WON)
+				{
+					_winningPieces[i].setTexture(this->_data->assets.GetTexture("X Winning Piece"));
+				}
+				else if (gameState == STATE_LOSE)
+				{
+					_winningPieces[i].setTexture(this->_data->assets.GetTexture("O Winning Piece"));
+				}
+			}
+
+			_winningPieces[0].setColor(sf::Color(255, 255, 255, winOppacity));
+			_winningPieces[1].setColor(sf::Color(255, 255, 255, winOppacity));
+			_winningPieces[2].setColor(sf::Color(255, 255, 255, winOppacity));
+			if (static_cast<int>(_winningPieces[0].getColor().a) >= 249)
+			{
+				_winningPieces[0].setColor(sf::Color(255, 255, 255, 255));
+				_winningPieces[1].setColor(sf::Color(255, 255, 255, 255));
+				_winningPieces[2].setColor(sf::Color(255, 255, 255, 255));
+				this->isWinFading = false;
 			}
 		}
 	}
