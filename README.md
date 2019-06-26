@@ -7,3 +7,5 @@ He have also a YouTube tutorial series: https://www.youtube.com/watch?v=JxKyUwpB
 This also helped: https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/ (all 3 sets).
 
 Some graphics used from https://www.flaticon.com, made by Pixel-perfect.
+
+NOTE: You'll probably need to configure project properties for SFML project and include directories, but i hope you can handle it - its easy.
