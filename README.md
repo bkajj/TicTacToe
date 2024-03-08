@@ -1,11 +1,17 @@
-# TicTacToe
-Learning SFML by creating simple TicTacToe game
+# Tic Tac Toe
 
-Started creating first game with C++ SFML. 
-This code is just a continuation of repo created by SonarSystems: https://github.com/SonarSystems/Tic-Tac-Toe-SFML-CPP.
-He have also a YouTube tutorial series: https://www.youtube.com/watch?v=JxKyUwpBmy4&list=PLRtjMdoYXLf4L0UVTggZdTV55baO6x6CO.
-This also helped: https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/ (all 3 sets).
+Tic Tac Toe game made in C++ with SFML. It was my first SFML project, I followed Sonar Systems Tic Tac Toe tutorial and added some of my stuff such as minmax AI, sounds, music and some other features that I don't remember. 
 
-Some graphics used from https://www.flaticon.com, made by Pixel-perfect.
+## How to run it
 
-NOTE: You'll probably need to configure project properties for SFML project and include directories, but i hope you can handle it - its easy.
+Since it is made using SFML so you need to install it first. It works on windows, haven't tested it on linux yet.
+
+### Installing SFML
+
+- Download SFML from [here](https://www.sfml-dev.org/download.php)
+- Unzip it
+- Configure your project dependencies like [this](https://www.sfml-dev.org/tutorials/2.6/start-vc.php)
+
+## Credits
+
+Thanks to Sonar Systems for providing me with SFML tutorial and Flaticon for some icons.
